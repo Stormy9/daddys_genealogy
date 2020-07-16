@@ -1,4 +1,9 @@
-Team Nerdvana -- recent graduates from Western Oregon University's Computer Science program -- are making a web app out of my (Tricia's) Dad's genealogy project.
+Team Nerdvana -- recent graduates from Western Oregon University's Computer Science program, currently consisting of: <br>
+* [Tricia Holman](https://stormy9.github.io/)
+* [Joey Tavares](https://joeyyau.github.io/)
+* [Victoria Rhine](https://victoria-rhine.github.io/)
+
+We are making a web app out of Tricia's Dad's genealogy project!
 
 Dad started working on genealogy in 1956.  He inherited some family records and even some tree drawings by family members who came before him; he has added to that significantly over the years, including drawing an entire "forest" of family trees (different sections of the family get their own tree -- otherwise it would be too large, just physically, to manage!)
 
