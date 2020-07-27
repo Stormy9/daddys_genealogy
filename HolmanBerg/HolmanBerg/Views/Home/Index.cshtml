@@ -2,30 +2,74 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="jumbotron our_jumbo">
+    <h1>HolmanBerg</h1>
+    <p class="lead">
+        The cumulative genealogy work of Gordon L. Holman -- began in 1956.
+    </p>
+    <p>
+        @Html.ActionLink("About", "About", "Home", new {@class="our_links"})
+    </p>
 </div>
 
 <div class="row">
+    <!--==============================================================================-->
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Our Families</h2>
+        <h4> Gordon's Father's Side </h4>
+        <ul>
+            <li> A - Holmen </li>
+            <li> B - Jo Frondal </li>
+            <li> C - Gunhildsbo </li>
+            <li> D - Underdahl </li>
+            <li> E - Frondal </li>
+        </ul>
+        <!------------------------------->
+        <h4> Ginger's Father's Side </h4>
+        <ul>
+            <li> K - Nemitz </li>
+            <li> L - Berg </li>
+        </ul>
+        <!------------------------------->
+        <h4> Gordon's Mother's Side </h4>
+        <ul>
+            <li> M - Evens </li>
+            <li> N - Goplerud </li>
+            <ul>
+                <li> N12 - C.L. Goplerud </li>
+                <li> N121 - L.C. Goplerud </li>
+                <li> N124 - Rustebakke </li>
+                <li> N15 - Lindelien </li>
+                <li> N49 - Dokkebakken </li>
+                <li> N491 - Knutson </li>
+            </ul>
+            <li> Q - Gulsvik </li>
+            <li> R - Haukedalen </li>
+        </ul>
+        <!------------------------------------>
+        <h4> Ginger's Mother's Side </h4>
+        <ul>
+            <li> U - Stewart </li>
+            <li> V - Des Brisay </li>
+            <li> W - Heltemes </li>
+            <li> Y - Jenkins </li>
+            <li> Z - Hales </li>
+        </ul>
+    </div>
+    <!--==========================================================================-->
+    <div class="col-md-4">
+        <h2> Tree Drawings - Available </h2>
+        <p> As soon as I find the list I will post it </p>
+
+        <h3> Tree Drawings - In Progress </h3>
+        <p> Same..... </p>
+    </div>
+    <!--==========================================================================-->
+    <div class="col-md-4">
+        <h2> Finding Yourself on the Tree - Your Tree Coordinates </h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            This here is how. <br />
+            (will find that explanation &amp; diagram, haha)
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>

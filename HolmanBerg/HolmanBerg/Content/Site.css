@@ -1,4 +1,5 @@
-﻿body {
+﻿/* came with this stuff */
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -22,3 +23,57 @@ select,
 textarea {
     max-width: 280px;
 }
+/*=====================================================================================*/
+/*=================================== our styling ====================================*/
+.our_body {
+    background-color: #ffff99;
+}
+/*------------------------------------------*/
+.our_nav {
+    background-color: #008000;
+    color: #e6ffe6;
+}
+.our_nav_a {
+
+}
+    .our_nav_a:link {
+        color: #e6ffe6;
+    }
+    .our_nav_a:visited {
+        color: #e6ffe6;
+    }
+    .our_nav_a:hover {
+    }
+    .our_nav_a:active {
+    }
+/*-------------------------------------------*/
+.our_jumbo {
+        background-color: #ffff99;
+ }
+/*-------------------------------------------*/
+.our_links {
+
+}
+    .our_links:link {
+        color: #008000;
+    }
+    .our_links:visited {
+        color: #008000;
+    }
+    .our_links:hover {
+    }
+    .our_links:active {
+    }
+/*------------------------------------------*/
+.our_buttons {
+
+}
+    .our_buttons:link {
+    }
+    .our_buttons:visited {
+    }
+    .our_buttons:hover {
+    }
+    .our_buttons:active {
+    }
+/*----------------------------------------*/
