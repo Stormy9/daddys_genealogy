@@ -7,16 +7,13 @@
                                    FIX/EDIT THIS STUFF
 #########################################################################################
 
-# app secrets for Petopia:  
+# app secrets for HolmanBerg:  
 # (there's no where to put it outside my repo the way it is locally)
-Petopia/appSettingSecrets.config
+HolmanBerg/appSettingSecrets.config
 
-# will we need this for Petopia? if we do here it is   [=
-Petopia/Petopia/Petopia/web_deploy.config
+# the web deploy stuff -- aka connection strings w/passwords:
+HolmanBerg/HolmanBerg/web_deploy.config
 
-
-# db connection stuff for CS460_Hwk09 (left as example)
-Web_deploy.config
 
 #########################################################################################
 

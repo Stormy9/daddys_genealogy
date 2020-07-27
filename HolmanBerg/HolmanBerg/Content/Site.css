@@ -27,6 +27,7 @@ textarea {
 /*=================================== our styling ====================================*/
 .our_body {
     background-color: #ffff99;
+    padding-bottom: 90px;
 }
 /*------------------------------------------*/
 .our_nav {
@@ -48,7 +49,8 @@ textarea {
     }
 /*-------------------------------------------*/
 .our_jumbo {
-        background-color: #ffff99;
+    background-color: #ffff99;
+    padding-left: 90px;
  }
 /*-------------------------------------------*/
 .our_links {
@@ -76,4 +78,22 @@ textarea {
     }
     .our_buttons:active {
     }
-/*----------------------------------------*/
+/*-----------------------------------------*/
+.tree_coord {
+    max-width: 300px;
+    height: auto;
+}
+/*-----------------------------------------*/
+.our_foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 23px;
+    font-size: 11px;
+    padding-top:5px;
+    padding-left:5px;
+    background-color: #008000;
+    color: #e6ffe6;
+}
+/*-----------------------------------------*/

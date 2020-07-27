@@ -1,75 +1,153 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "HolmanBerg - the genealogy work of Gordon L. Holman";
 }
 
-<div class="jumbotron our_jumbo">
-    <h1>HolmanBerg</h1>
-    <p class="lead">
-        The cumulative genealogy work of Gordon L. Holman -- began in 1956.
-    </p>
-    <p>
-        @Html.ActionLink("About", "About", "Home", new {@class="our_links"})
-    </p>
-</div>
-
-<div class="row">
-    <!--==============================================================================-->
-    <div class="col-md-4">
-        <h2>Our Families</h2>
-        <h4> Gordon's Father's Side </h4>
-        <ul>
-            <li> A - Holmen </li>
-            <li> B - Jo Frondal </li>
-            <li> C - Gunhildsbo </li>
-            <li> D - Underdahl </li>
-            <li> E - Frondal </li>
-        </ul>
-        <!------------------------------->
-        <h4> Ginger's Father's Side </h4>
-        <ul>
-            <li> K - Nemitz </li>
-            <li> L - Berg </li>
-        </ul>
-        <!------------------------------->
-        <h4> Gordon's Mother's Side </h4>
-        <ul>
-            <li> M - Evens </li>
-            <li> N - Goplerud </li>
-            <ul>
-                <li> N12 - C.L. Goplerud </li>
-                <li> N121 - L.C. Goplerud </li>
-                <li> N124 - Rustebakke </li>
-                <li> N15 - Lindelien </li>
-                <li> N49 - Dokkebakken </li>
-                <li> N491 - Knutson </li>
-            </ul>
-            <li> Q - Gulsvik </li>
-            <li> R - Haukedalen </li>
-        </ul>
-        <!------------------------------------>
-        <h4> Ginger's Mother's Side </h4>
-        <ul>
-            <li> U - Stewart </li>
-            <li> V - Des Brisay </li>
-            <li> W - Heltemes </li>
-            <li> Y - Jenkins </li>
-            <li> Z - Hales </li>
-        </ul>
-    </div>
-    <!--==========================================================================-->
-    <div class="col-md-4">
-        <h2> Tree Drawings - Available </h2>
-        <p> As soon as I find the list I will post it </p>
-
-        <h3> Tree Drawings - In Progress </h3>
-        <p> Same..... </p>
-    </div>
-    <!--==========================================================================-->
-    <div class="col-md-4">
-        <h2> Finding Yourself on the Tree - Your Tree Coordinates </h2>
-        <p>
-            This here is how. <br />
-            (will find that explanation &amp; diagram, haha)
+<div class="container-fluid">
+    <div class="jumbotron our_jumbo">
+        <h1>HolmanBerg</h1>
+        <p class="lead">
+            The cumulative genealogy work of Gordon L. Holman -- began in 1956.
         </p>
+        <p>
+            Also genealogy work for 2nd wife Ginger Berg, mother of Tricia &amp; Siri
+        </p>
+        <p>
+            @Html.ActionLink("About", "About", "Home", new { @class = "our_links" })
+        </p>
+    </div>
+    <!--==================================================================================-->
+    <div class="row">
+        <!---------------------------------------------------------------------------------->
+        <div class="col-md-4">
+            <h2>Our Families</h2>
+            <h4> Gordon's Father's Side </h4>
+            <ul>
+                <li> A - Holmen </li>
+                <li> B - Jo Frondal </li>
+                <li> C - Gunhildsbo </li>
+                <li> D - Underdahl </li>
+                <li> E - Frondal </li>
+            </ul>
+            <!------------------------------->
+            <h4> Ginger's Father's Side </h4>
+            <ul>
+                <li> K - Nemitz </li>
+                <li> L - Berg </li>
+            </ul>
+            <!------------------------------->
+            <h4> Gordon's Mother's Side </h4>
+            <ul>
+                <li> M - Evens </li>
+                <li> N - Goplerud </li>
+                <ul>
+                    <li> N12 - C.L. Goplerud </li>
+                    <li> N121 - L.C. Goplerud </li>
+                    <li> N124 - Rustebakke </li>
+                    <li> N15 - Lindelien </li>
+                    <li> N49 - Dokkebakken </li>
+                    <li> N491 - Knutson </li>
+                </ul>
+                <li> Q - Gulsvik </li>
+                <li> R - Haukedalen </li>
+            </ul>
+            <!------------------------------------>
+            <h4> Ginger's Mother's Side </h4>
+            <ul>
+                <li> U - Stewart </li>
+                <li> V - Des Brisay </li>
+                <li> W - Heltemes </li>
+                <li> Y - Jenkins </li>
+                <li> Z - Hales </li>
+            </ul>
+        </div>
+        <!---------------------------------------------------------------------------------->
+        <div class="col-md-4">
+            <h2> Tree Drawings - Available </h2>
+            <ul>
+                <li> Frondal - (42" x 84") </li>
+                <li> Goplerud - (24" x 42") </li>
+                <li> Hales - (30" x 42") </li>
+                <li> Knutson - (24" x 36") </li>
+            </ul>
+
+            <h3> Tree Drawings - In Progress </h3>
+            <p> gotta find out..... </p>
+
+            <p style="text-align:center; color: #008000;">
+                ------------------------------------
+            </p>
+
+            <h2> Family Albums Available </h2>
+
+            <h3> Family Albums In Progress </h3>
+
+            <p style="text-align:center; color: #008000;">
+                ------------------------------------
+            </p>
+
+            <h2> HolmanBerg Herald Newsletter </h2>
+
+            <p style="text-align:center; color: #008000;">
+                ------------------------------------
+            </p>
+
+            <h2> The Holman Scrolls </h2>
+
+        </div>
+        <!---------------------------------------------------------------------------------->
+        <div class="col-md-4">
+            <h2> Finding Yourself on the Tree - Your Tree Coordinates </h2>
+            <p>
+                Every person in the database has been assigned a number -- in correspondance
+                with Gordon, you will most likely see that number after your name ..... this is
+                your "family tree branch number".
+                <br /><br />
+                This number identifies exactly where you are in the family -- and on a given
+                family tree drawing.
+                <br /><br />
+                Here is a diagram with examples to help understand the numbering system:
+            </p>
+            <img src="~/Images/branch_numbering_system_part01.jpg" class="tree_coord" />
+            <p>
+                Each family tree in our family tree orchard is assigned a letter designation.
+                Letters being used so far are listed to the left.  This letter represents the
+                progenitor of the part of the family shown on any given tree drawing.
+            </p>
+            <p>
+                Children of the progenitor are numbered in order of birth... In the generic
+                example shown here: J1 thru J(10).
+                <br />
+                The children of each of the children in the first family are subsequently
+                numbered in birth order within each of their own families.
+                <br />
+                In the example diagram above, J3 had three children.  They would be numbered
+                J31 thru J33.
+                <br />
+                Each family in turn would be numbered similarly, as can be seen on the diagram.
+            </p>
+            <p>
+                Other characteristics of the branch numbering system:
+                <ul>
+                    <li>
+                        Families with 10 or more children - the two digits are shown in
+                        parentheses that represent one child.  Example: J(10)
+                    </li>
+                    <li>
+                        A single digit in parentheses indicates an adopted child.  Example: J31(1)
+                    </li>
+                    <li>
+                        A dash preceding the digit indicates a step child.  Example:  J33-1
+                    </li>
+                    <li>
+                        A step child adopted by the parent of this family is indicated like:
+                        J64(-1)
+                    </li>
+                    <li>
+                        A spouse - Example: J333-S <br />
+                        If more than one spouse, Example: J643-S1 and J643-S2, etc.
+                    </li>
+                </ul>
+            </p>
+        </div>
     </div>
 </div>
