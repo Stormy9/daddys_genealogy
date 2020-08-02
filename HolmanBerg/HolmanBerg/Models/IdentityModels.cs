@@ -27,7 +27,8 @@ namespace HolmanBerg.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            //: base("DefaultConnection", throwIfV1Schema: false)
+            : base("HolmanBerg_Context_Azure", throwIfV1Schema: false)
         {
         }
 

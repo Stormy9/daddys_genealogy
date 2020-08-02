@@ -1,9 +1,10 @@
 -- see what's there...
 select * from AspNetUsers;
+--select * from __MigrationHistory;
 --=======================================================================================
 -- delete a record example:
 --
---DELETE FROM AspNetUsers WHERE Email='stormcloud.enterprises@gmail.com';
+--DELETE FROM __MigrationHistory WHERE MigrationID='202008020113216_InitialCreate';
 --=======================================================================================
 -- add column(s) example:
 --
@@ -15,5 +16,5 @@ select * from AspNetUsers;
 --=======================================================================================
 -- drop column(s) example:
 --
---ALTER TABLE AspNetUsers DROP COLUMN FirstName;
+--ALTER TABLE AspNetUsers DROP COLUMN FirstName, LastName;
 --=======================================================================================

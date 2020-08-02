@@ -8,6 +8,9 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
+<!---->
+<!--==================================================================================-->
+<!---->
 <body class="our_body">
     <div class="navbar navbar-inverse navbar-fixed-top our_nav">
         <div class="container">
@@ -21,6 +24,7 @@
                 @Html.ActionLink("HolmanBerg", "Index", "Home", new { area = "" },
                                             new { @class = "navbar-brand our_nav_a" } )
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
@@ -33,7 +37,9 @@
                                             new { style = "color: #e6ffe6;" } )
                     </li>
                 </ul>
+
                 @Html.Partial("_LoginPartial")
+
             </div>
         </div>
     </div>
