@@ -16,40 +16,44 @@ namespace HolmanBerg.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        //===============================================================================
         public ManageController()
         {
         }
-
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        //===============================================================================
+        public ManageController(ApplicationUserManager userManager, 
+                                ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
-
+        //===============================================================================
         public ApplicationSignInManager SignInManager
         {
             get
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
+
             private set 
             { 
                 _signInManager = value; 
             }
         }
-
+        //===============================================================================
         public ApplicationUserManager UserManager
         {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
+
             private set
             {
                 _userManager = value;
             }
         }
-
+        //===============================================================================
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -72,9 +76,11 @@ namespace HolmanBerg.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+
+
             return View(model);
         }
-
+        //===============================================================================
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
@@ -82,7 +88,9 @@ namespace HolmanBerg.Controllers
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
         {
             ManageMessageId? message;
-            var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+            var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), 
+                                                            new UserLoginInfo(loginProvider, providerKey));
+
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -96,16 +104,18 @@ namespace HolmanBerg.Controllers
             {
                 message = ManageMessageId.Error;
             }
+
+
             return RedirectToAction("ManageLogins", new { Message = message });
         }
-
+        //===============================================================================
         //
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {
             return View();
         }
-
+        //-------------------------------------------------------------------------------
         //
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
@@ -116,6 +126,7 @@ namespace HolmanBerg.Controllers
             {
                 return View(model);
             }
+
             // Generate the token and send it
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
             if (UserManager.SmsService != null)
@@ -127,9 +138,11 @@ namespace HolmanBerg.Controllers
                 };
                 await UserManager.SmsService.SendAsync(message);
             }
+
+
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
-
+        //===============================================================================
         //
         // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]
@@ -138,13 +151,16 @@ namespace HolmanBerg.Controllers
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
             if (user != null)
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
+
+
             return RedirectToAction("Index", "Manage");
         }
-
+        //===============================================================================
         //
         // POST: /Manage/DisableTwoFactorAuthentication
         [HttpPost]
@@ -153,22 +169,27 @@ namespace HolmanBerg.Controllers
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
             if (user != null)
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
+
+
             return RedirectToAction("Index", "Manage");
         }
-
+        //===============================================================================
         //
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
-            // Send an SMS through the SMS provider to verify the phone number
-            return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
-        }
 
+            // Send an SMS through the SMS provider to verify the phone number
+            return phoneNumber == null ? View("Error") : 
+                                         View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
+        }
+        //-------------------------------------------------------------------------------
         //
         // POST: /Manage/VerifyPhoneNumber
         [HttpPost]
@@ -179,7 +200,10 @@ namespace HolmanBerg.Controllers
             {
                 return View(model);
             }
-            var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
+
+
+            var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), 
+                                                                  model.PhoneNumber, model.Code);
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -187,13 +211,17 @@ namespace HolmanBerg.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
+
+
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
+
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "Failed to verify phone");
+
             return View(model);
         }
-
+        //===============================================================================
         //
         // POST: /Manage/RemovePhoneNumber
         [HttpPost]
@@ -205,21 +233,25 @@ namespace HolmanBerg.Controllers
             {
                 return RedirectToAction("Index", new { Message = ManageMessageId.Error });
             }
+
+
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
+
+
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
-
+        //===============================================================================
         //
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             return View();
         }
-
+        //-------------------------------------------------------------------------------
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
@@ -230,7 +262,10 @@ namespace HolmanBerg.Controllers
             {
                 return View(model);
             }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+
+
+            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), 
+                                                                model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -238,19 +273,23 @@ namespace HolmanBerg.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
+
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
+
+
             AddErrors(result);
+
             return View(model);
         }
-
+        //===============================================================================
         //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
             return View();
         }
-
+        //-------------------------------------------------------------------------------
         //
         // POST: /Manage/SetPassword
         [HttpPost]
@@ -260,6 +299,7 @@ namespace HolmanBerg.Controllers
             if (ModelState.IsValid)
             {
                 var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+
                 if (result.Succeeded)
                 {
                     var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -267,15 +307,17 @@ namespace HolmanBerg.Controllers
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     }
+
                     return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
                 }
+
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        //===============================================================================
         //
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
@@ -284,21 +326,31 @@ namespace HolmanBerg.Controllers
                 message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
+
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
             if (user == null)
             {
                 return View("Error");
             }
+
+
             var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
-            var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();
+            var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes()
+                                                   .Where(auth => userLogins
+                                                   .All(ul => auth.AuthenticationType != ul.LoginProvider))
+                                                   .ToList();
+
             ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
+
+
             return View(new ManageLoginsViewModel
             {
                 CurrentLogins = userLogins,
                 OtherLogins = otherLogins
             });
         }
-
+        //===============================================================================
         //
         // POST: /Manage/LinkLogin
         [HttpPost]
@@ -308,20 +360,24 @@ namespace HolmanBerg.Controllers
             // Request a redirect to the external login provider to link a login for the current user
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
-
+        //-------------------------------------------------------------------------------
         //
         // GET: /Manage/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
+
             if (loginInfo == null)
             {
                 return RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
             }
-            var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
-            return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
-        }
 
+            var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+
+            return result.Succeeded ? RedirectToAction("ManageLogins") : 
+                                      RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+        //===============================================================================
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -332,8 +388,8 @@ namespace HolmanBerg.Controllers
 
             base.Dispose(disposing);
         }
-
-#region Helpers
+        //===============================================================================
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
