@@ -19,18 +19,18 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("HolmanBerg", "Index", "Home", new { area = "" },
-                                            new { @class = "navbar-brand our_nav_a" })
+                                            new { @class = "navbar-brand our_nav_a" } )
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
                         @Html.ActionLink("About", "About", "Home", new { @class = "our_nav_a" },
-                                            new { style = "color: #e6ffe6;" })
+                                            new { style = "color: #e6ffe6;" } )
                     </li>
                     <!-- stupid fucking style crap again! -->
                     <li>
                         @Html.ActionLink("Contact", "Contact", "Home", new { @class = "our_nav_a" },
-                                            new { style = "color: #e6ffe6;" })
+                                            new { style = "color: #e6ffe6;" } )
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -51,5 +51,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <!--==============================================================================-->
 </body>
 </html>
