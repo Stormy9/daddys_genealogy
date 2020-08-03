@@ -81,7 +81,8 @@ namespace HolmanBerg.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, 
+                                                                 model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -168,8 +169,8 @@ namespace HolmanBerg.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email,
-                                                 FirstName = model.FirstName, LastName = model.LastName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email
+                                                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
 
@@ -351,7 +352,9 @@ namespace HolmanBerg.Controllers
                 return View("Error");
             }
 
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, 
+                                                        ReturnUrl = model.ReturnUrl, 
+                                                        RememberMe = model.RememberMe });
         }
         //===============================================================================
         //

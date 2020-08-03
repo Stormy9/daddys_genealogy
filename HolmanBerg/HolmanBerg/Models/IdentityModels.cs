@@ -11,8 +11,8 @@ namespace HolmanBerg.Models
     // please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public string FirstName { get; internal set; }
-        public string LastName { get; internal set; }
+        //public string FirstName { get; internal set; }
+        //public string LastName { get; internal set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -30,6 +30,8 @@ namespace HolmanBerg.Models
             //: base("DefaultConnection", throwIfV1Schema: false)
             : base("HolmanBerg_Context_Azure", throwIfV1Schema: false)
         {
+            // disable code-first migrations
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public static ApplicationDbContext Create()

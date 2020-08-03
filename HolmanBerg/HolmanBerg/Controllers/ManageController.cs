@@ -32,7 +32,8 @@ namespace HolmanBerg.Controllers
         {
             get
             {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                return _signInManager ?? HttpContext.GetOwinContext()
+                                                    .Get<ApplicationSignInManager>();
             }
 
             private set 
@@ -45,7 +46,8 @@ namespace HolmanBerg.Controllers
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager ?? HttpContext.GetOwinContext()
+                                                  .GetUserManager<ApplicationUserManager>();
             }
 
             private set

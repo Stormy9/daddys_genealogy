@@ -80,15 +80,15 @@ namespace HolmanBerg.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [StringLength(15)]
-        [Display(Name ="First Name:")]
-        public string FirstName { get; set; }
+        //[Required]
+        //[StringLength(15)]
+        //[Display(Name ="First Name:")]
+        //public string FirstName { get; set; }
 
-        [Required]
-        [StringLength(15)]
-        [Display(Name ="LastName:")]
-        public string LastName { get; set; }
+        //[Required]
+        //[StringLength(15)]
+        //[Display(Name ="LastName:")]
+        //public string LastName { get; set; }
 
         [Required]
         [EmailAddress]
